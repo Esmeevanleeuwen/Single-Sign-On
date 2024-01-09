@@ -1,0 +1,4 @@
+<!-- app/views/home/profile.html.erb -->
+<h1>Welkom, <%= current_user.email %></h1>
+<%= button_to 'Uitloggen', destroy_user_session_path, method: :delete %>
+<%= link_to 'Wachtwoord wijzigen', reset_password_path %>

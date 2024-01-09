@@ -9,9 +9,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  devise_for :users, controllers: { passwords: 'custom_passwords_controller' }
+  devise_for :users, controllers: { passwords: 'custom_passwords' }
   root to: "home#index"
   
+  get 'profile', to: 'home#profile' 
+  get 'reset_password', to: 'home#reset_password'
+
+  # config/routes.rb
 
 
   # root "posts#index"

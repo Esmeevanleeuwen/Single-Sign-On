@@ -6,17 +6,19 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <link rel="stylesheet" type="text/css" href="/path/to/styles.css">
 </head>
+
 <body>
-  <nav>
-    <% if user_signed_in? %>
-      <%= button_to 'Uitloggen', destroy_user_session_path, method: :delete, form: { class: "inline" } %>
-    <% else %>
-      <%= link_to 'Inloggen', new_session_path(:user) %>
-      <%= link_to 'Registreren', new_registration_path(:user) %>
-    <% end %>
-  </nav>
+<nav>
+<% if user_signed_in? %>
+  <%= link_to 'Profiel', profile_path %>
+  <%= button_to 'Uitloggen', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Inloggen', new_user_session_path %>
+  <%= link_to 'Registreren', new_user_registration_path %>
+<% end %>
+</nav>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <%= yield %>
