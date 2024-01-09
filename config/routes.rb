@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,9 +9,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  devise_for :users
+  devise_for :users, controllers: { passwords: 'custom_passwords_controller' }
   root to: "home#index"
   
+
 
   # root "posts#index"
 

@@ -1,11 +1,24 @@
-<!-- Home Pagina Inhoud -->
-<nav>
-  <% if user_signed_in? %>
-  <%= button_to 'Uitloggen', destroy_user_session_path, method: :delete, form: { class: "inline" } %>
-   
-  <% else %>
-    <%= link_to 'Inloggen', new_session_path(:user) %>
-    <%= link_to 'Registreren', new_registration_path(:user) %>
-  <% end %>
-</nav>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SingleSignOn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" type="text/css" href="/path/to/styles.css">
+</head>
+<body>
+  <nav>
+    <% if user_signed_in? %>
+      <%= button_to 'Uitloggen', destroy_user_session_path, method: :delete, form: { class: "inline" } %>
+    <% else %>
+      <%= link_to 'Inloggen', new_session_path(:user) %>
+      <%= link_to 'Registreren', new_registration_path(:user) %>
+    <% end %>
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</body>
+</html>
